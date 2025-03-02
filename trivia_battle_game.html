@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battle Game</title>
+</head>
+
+<body>
+
+  <div id="player-name-section">
+    <input type="text" id="first-player-name" name="first-player-name" value="">
+    <input type="text" id="second-player-name" name="second-player-name" value="">
+    <button type="button" id="submit-button">Submit</button>
+  </div>
+
+  <div id="category-section" style="display: none;">
+    <h1 id="heading">Welcome to my Trivia App</h1>
+    <div id="dis-first-player-name"></div>
+    <div id="dis-second-player-name"></div>
+    <div id="display-heading"></div>
+    <form id="form-category">
+      <label for="category">Choose a category:</label>
+      <select id="category" name="category">
+        <option value="History">History</option>
+        <option value="maths">Maths</option>
+        <option value="Science">Science</option>
+        <option value="Geography">Geography</option>
+      </select>
+      <button type="submit" id="submit">Submit</button>
+    </form>
+  </div>
+
+  <div id="question-display-section" style="display: none;">
+    <div id="display-question"></div>
+   <div id="first-player-score"></div>
+   <div id="second-player-score"></div>
+
+
+
+    <input type="radio" id="option1" class="option" name="option" value="">
+    <label for="option1" class="optionLabel"></label><br>
+
+    <input type="radio" id="option2" class="option" name="option" value="">
+    <label for="option2" class="optionLabel"></label><br>
+
+    <input type="radio" id="option3" class="option" name="option" value="">
+    <label for="option3" class="optionLabel"></label><br>
+
+    <input type="radio" id="option4" class="option" name="option" value="">
+    <label for="option4" class="optionLabel"></label><br>
+
+    <button type="button" id="next">Next</button>
+  </div>
+
+  <div id="continue-and-quit-section" style="display: none;">
+    <button type="button" id="continue-button">Continue Game</button>
+    <button type="button" id="quit-button">Quit Game</button>
+  </div>
+
+  <div id="winner-section" style="display: none;">
+    <div id="winner-name"></div>
+  </div>
+
+  <script src="trivia_battle_game.js"></script>
+
+</body>
+
+</html>
