@@ -15,6 +15,7 @@ let firstPlayerScore = 0;
 let secondPlayerScore = 0;
 
 let questionObjects = [];
+let options = [];
 
 let submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", function () {
@@ -50,12 +51,13 @@ function fetchQuestions() {
 
     for (let i = 0; i < diff.length; i++) {
         fetch(`https://the-trivia-api.com/v2/questions?limit=1&categories=${selectedCategory}&difficulties=${diff[i]}`)
-            .then(response => response.json())
+            .then(response => 
+                response.json())              
             .then(data => {
                 questionObjects.push(data);
             })
             .catch(error => {
-                console.error("Error:", error);
+                console.error("showing error", error);
             });
     }
 }
@@ -70,6 +72,7 @@ function displayQuestions() {
     correctAnswer = questionObjects[j].correctAnswer;
     options = questionObjects[j].incorrectAnswers;
     options.push(correctAnswer);
+    options.sort(() => Math.random() - 0.5);
 
     displayOptions();
 
@@ -82,16 +85,16 @@ function displayOptions() {
     
     let collectionLabel = document.getElementsByClassName("optionLabel");
     let collectionInput = document.getElementsByClassName("option");
-
-
+    
+    let difficultyLevel = questionObjects[j].difficulty;
+    let correctAnswer = questionObjects[j].correctAnswer;
+    
     for (let i = 0; i < collectionLabel.length; i++) {
         collectionInput[i].value = options[i];
         collectionLabel[i].textContent = options[i];
 
         collectionInput[i].addEventListener("click", function () {
             let checkedOption = collectionInput[i].value;
-            let difficultyLevel = questionObjects[j].difficulty;
-            let correctAnswer = questionObjects[j].correctAnswer;
 
             if (correctAnswer === checkedOption) {
                 if (difficultyLevel === "easy") {
